@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Top Grossing Games</title>
+</head>
+<br>
+<h1 align="center">Top Grossing</h1>
+
+<div style = "align-content: center">
+    <form th:action="@{'/ios/games/charts/grossing/withLimit'}" method="get">
+        <p>Add some limit</p>
+        <input type="limit" th:name="limit" th:placeholder="limit" /><br>
+        <button type="submit">Add</button><br>
+    </form>
+
+</div>
+<br>
+<div>
+    <table border = "1">
+        <thread>
+            <tr>
+                <th>Name</th>
+                <th>Artist name</th>
+                <th>Release date</th>
+                <th>URL</th>
+            </tr>
+        </thread>
+        <tbody>
+        <!--/*@thymesVar id="topGames" type=""*/-->
+        <tr th:each="game : ${topGames}">
+            <!--/*@thymesVar id="game" type=""*/-->
+            <!--/*@thymesVar id="name" type=""*/-->
+            <td th:text="${game.name}">Name</td>
+            <td th:text="${game.artistName}">Artist Name</td>
+            <td th:text="${game.releaseDate}">Release Date</td>
+            <td th:text="${game.url}">URl</td>
+        </tbody>
+
+    </table>
+</div>
+<a href="/">Return to main page</a>
+</body>
+</html>
